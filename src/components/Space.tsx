@@ -1,13 +1,16 @@
 import './Space.css';
 
 interface ContainerProps {
-  turn: string;
+  index: number;
+  value: string;
+
+  mark: (index: number) => void
 }
 
 const Space: React.FC<ContainerProps> = (props) => {
   return (
-    <div className="space">
-      {props.turn}
+    <div className="space" onClick={() => props.mark(props.index)}>
+      {props.value}
     </div>
   );
 };

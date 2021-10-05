@@ -1,21 +1,18 @@
 import './Grid.css';
 import Space from './Space';
-import {X, O} from './Players';
+import { X, O } from './Players';
 
-interface ContainerProps { }
+interface ContainerProps {
+  spaces: string[];
+  mark: (index: number) => void
+}
 
-const Grid: React.FC<ContainerProps> = () => {
+const Grid: React.FC<ContainerProps> = (props) => {
+  const spaces = props.spaces.map((space, index) => <Space index={index} value={space} mark={props.mark}></Space>);
+
   return (
     <div className="grid">
-        <Space turn={O}></Space>
-        <Space turn={X}></Space>
-        <Space turn={O}></Space>
-        <Space turn={O}></Space>
-        <Space turn={X}></Space>
-        <Space turn={O}></Space>
-        <Space turn={O}></Space>
-        <Space turn={X}></Space>
-        <Space turn={O}></Space>
+      {spaces}
     </div>
   );
 };
