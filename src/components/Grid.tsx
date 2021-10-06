@@ -8,7 +8,7 @@ interface ContainerProps {
 }
 
 const Grid: React.FC<ContainerProps> = (props) => {
-  const spaces = props.spaces.map((space, index) => <Space index={index} value={space} mark={props.mark}></Space>);
+  const spaces = props.spaces.map((space, index) => <Space key={index} index={index} value={space} mark={props.mark}></Space>);
 
   return (
     <div className="grid">
