@@ -1,6 +1,5 @@
 import './Grid.css';
 import Space from './Space';
-import { X, O } from './Players';
 
 interface ContainerProps {
   spaces: string[];
