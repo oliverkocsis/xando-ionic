@@ -1,5 +1,4 @@
-import { attachProps } from '@ionic/react/dist/types/components/utils';
-import React, { useDebugValue, useState } from 'react';
+import React, { useState } from 'react';
 import './Game.css';
 import Grid from './Grid';
 import { _, X, O } from './Players';
