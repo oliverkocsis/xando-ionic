@@ -29,17 +29,21 @@ const Game: React.FC<ContainerProps> = () => {
 
   const [turn, setTurn] = useState(X);
   const [spaces, setSpaces] = useState(initializeSpaces());
+  const [winner, setWinner] = useState(_);
 
   function mark(index: number) {
-    console.log("mark " + index + " as " + turn);
-    const newSpaces = [...spaces]
-    newSpaces[index] = turn;
-    setSpaces(newSpaces);
-    const winner = whoDidWin(spaces);
     if (winner == _) {
-      setTurn(turn == X ? O : X);
-    } else {
-      console.log("winner is " + winner);
+      console.log("mark " + index + " as " + turn);
+      const newSpaces = [...spaces]
+      newSpaces[index] = turn;
+      setSpaces(newSpaces);
+      const newWinner = whoDidWin(newSpaces);
+      if (newWinner == _) {
+        setTurn(turn == X ? O : X);
+      } else {
+        setWinner(newWinner);
+        console.log("winner is " + newWinner);
+      }
     }
   }
 
