@@ -5,12 +5,16 @@ import { _, X, O } from './Players';
 
 interface ContainerProps { }
 
-function initializeSpaces(): string[] {
+export function initializeSpaces(): string[] {
   const grid = []
   for (let i = 0; i < 9; i++) {
     grid.push(_);
   }
   return grid;
+}
+
+export function whoDidWin(spaces: string[]): string {
+  return _;
 }
 
 const Game: React.FC<ContainerProps> = () => {
@@ -19,10 +23,16 @@ const Game: React.FC<ContainerProps> = () => {
   const [spaces, setSpaces] = useState(initializeSpaces());
 
   function mark(index: number) {
-    console.log("Marked: " + index);
+    console.log("mark " + index + " as " + turn);
     spaces[index] = turn;
     setSpaces(spaces);
-    setTurn(turn == X ? O : X);
+    const winner = whoDidWin(spaces);
+    if(winner == _) {
+      setTurn(turn == X ? O : X);
+    } else {
+      console.log("winner is " + winner);
+    }
+    
   }
 
   return (

@@ -22,5 +22,9 @@ The majority of Ionic app development can be spent right in the browser using th
     cd xando-ionic
     ionic serve
 
+## Run the Tests
+
+When you run `npm test`, Jest will launch in watch mode*. Every time you save a file, it will re-run the tests
+
 # References
 [^1]: Tic-tac-toe From Wikipedia, the free encyclopedia https://en.wikipedia.org/wiki/Tic-tac-toe 
