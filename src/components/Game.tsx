@@ -24,8 +24,9 @@ const Game: React.FC<ContainerProps> = () => {
 
   function mark(index: number) {
     console.log("mark " + index + " as " + turn);
-    spaces[index] = turn;
-    setSpaces(spaces);
+    const newSpaces = [...spaces]
+    newSpaces[index] = turn;
+    setSpaces(newSpaces);
     const winner = whoDidWin(spaces);
     if(winner == _) {
       setTurn(turn == X ? O : X);
