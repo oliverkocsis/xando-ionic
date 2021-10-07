@@ -19,7 +19,7 @@ test('empty: no winner', () => {
   expect(winner).toBe(_);
 });
 
-test('x won horizontal', () => {
+test('x won horizontal top', () => {
   const spaces = [
     X, X, X,
     O, O, _,
@@ -29,27 +29,37 @@ test('x won horizontal', () => {
   expect(winner).toBe(X);
 });
 
-test('o won horizontal', () => {
+test('x won horizontal bottom', () => {
+  const spaces = [
+    _, _, _,
+    O, O, _,
+    X, X, X,
+  ]
+  const winner = whoDidWin(spaces);
+  expect(winner).toBe(X);
+});
+
+test('o won horizontal middle', () => {
   const spaces = [
     X, X, _,
     O, O, O,
     X, _, _,
   ]
   const winner = whoDidWin(spaces);
-  expect(winner).toBe(X);
+  expect(winner).toBe(O);
 });
 
-test('X won vertical', () => {
+test('x won vertical center', () => {
   const spaces = [
     O, X, _,
     O, X, _,
     _, X, _,
   ]
   const winner = whoDidWin(spaces);
-  expect(winner).toBe(O);
+  expect(winner).toBe(X);
 });
 
-test('o won vertical', () => {
+test('o won vertical left', () => {
   const spaces = [
     O, X, X,
     O, X, _,
@@ -57,6 +67,17 @@ test('o won vertical', () => {
   ]
   const winner = whoDidWin(spaces);
   expect(winner).toBe(O);
+});
+
+test('x won vertical right', () => {
+  const spaces = [
+    
+    _, O, X,
+    _, O, X,
+    _, _, X,
+  ]
+  const winner = whoDidWin(spaces);
+  expect(winner).toBe(X);
 });
 
 test('x won diagonal', () => {
