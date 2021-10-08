@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './Game.css';
 import Grid from './Grid';
 import { _, X, O } from './Players';
+import { IonButton } from '@ionic/react';
+
 
 interface ContainerProps { }
 
@@ -28,7 +30,8 @@ export function whoDidWin(spaces: string[]): string {
 const Game: React.FC<ContainerProps> = () => {
 
   const [turn, setTurn] = useState(X);
-  const [spaces, setSpaces] = useState(initializeSpaces());
+  const emptySpaces = initializeSpaces();
+  const [spaces, setSpaces] = useState(emptySpaces);
   const [winner, setWinner] = useState(_);
 
   function mark(index: number) {
@@ -47,9 +50,17 @@ const Game: React.FC<ContainerProps> = () => {
     }
   }
 
+  function restart() {
+    const restartedSpaces = initializeSpaces();
+    setSpaces(restartedSpaces);
+    setWinner(_);
+    setTurn(X);
+  }
+
   return (
     <div className="game">
       <Grid spaces={spaces} mark={mark.bind(this)}></Grid>
+      <IonButton onClick={restart}>Restart</IonButton>
     </div>
   );
 };
