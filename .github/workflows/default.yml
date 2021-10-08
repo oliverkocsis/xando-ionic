@@ -34,7 +34,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: |
           npm install
-          npm install @ionic/cli
+          npm install -g @ionic/cli
           ionic build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
