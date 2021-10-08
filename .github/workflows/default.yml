@@ -23,18 +23,19 @@ jobs:
     - run: |
         npm install
         npm run test
-    - uses: actions/upload-artifact@v2
-      with:
-        name: web
-        path: build
-
+        
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          name: web
+          node-version: ${{ matrix.node-version }}
+      - run: |
+          npm install
+          npm install @ionic/cli
+          ionic build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
