@@ -1,6 +1,6 @@
 {
 	"appId": "app.xando.ionic",
-	"appName": "X & O: the tic-tac-toe game",
+	"appName": "X and O: the tic-tac-toe game",
 	"webDir": "build",
 	"bundledWebRuntime": false
 }

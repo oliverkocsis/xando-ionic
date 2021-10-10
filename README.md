@@ -26,5 +26,21 @@ The majority of Ionic app development can be spent right in the browser using th
 
 When you run `npm test`, Jest will launch in watch mode*. Every time you save a file, it will re-run the tests
 
+## Deploying to Android
+
+Complete a fresh build of the Ionic project, fixing any errors that it reports:
+
+    ionic build
+
+Every time you perform a build (e.g. `ionic build`) that updates your web directory (default: `build`), you'll need to copy those changes into your native projects:
+
+    ionic cap copy
+
+## Deploy to a Firebase
+
+To deploy to a Firebase project, run the following command from your project directory:
+
+    firebase deploy
+
 # References
 [^1]: Tic-tac-toe From Wikipedia, the free encyclopedia https://en.wikipedia.org/wiki/Tic-tac-toe 
