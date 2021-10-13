@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Game.css';
 import Grid from './Grid';
 import { _, X, O } from './Players';
-import { IonButton } from '@ionic/react';
+import { IonAlert, IonButton } from '@ionic/react';
 
 
 interface ContainerProps { }
@@ -29,10 +29,12 @@ export function whoDidWin(spaces: string[]): string {
 
 const Game: React.FC<ContainerProps> = () => {
 
-  const [turn, setTurn] = useState(X);
   const emptySpaces = initializeSpaces();
+
   const [spaces, setSpaces] = useState(emptySpaces);
+  const [turn, setTurn] = useState(X);
   const [winner, setWinner] = useState(_);
+  const [showAlert, setShowAlert] = useState(false);
 
   function mark(index: number) {
     if (winner == _) {
@@ -46,6 +48,7 @@ const Game: React.FC<ContainerProps> = () => {
       } else {
         setWinner(newWinner);
         console.log("winner is " + newWinner);
+        setShowAlert(true);
       }
     }
   }
@@ -61,6 +64,17 @@ const Game: React.FC<ContainerProps> = () => {
     <div className="game">
       <Grid spaces={spaces} mark={mark.bind(this)}></Grid>
       <IonButton onClick={restart}>Restart</IonButton>
+      <IonAlert
+        isOpen={showAlert}
+        onDidDismiss={() => setShowAlert(false)}
+        message={'The winner is ' + winner}
+        buttons={[
+          {
+            text: 'Start new',
+            handler: restart.bind(this)
+          }
+        ]}
+      />
     </div>
   );
 };
