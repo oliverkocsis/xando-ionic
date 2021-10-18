@@ -16,6 +16,11 @@ export function initializeSpaces(): string[] {
   return grid;
 }
 
+export function getGridSize(width: number, height: number): number {
+  const margin = 25;
+  return height < width ? height - 4 * margin : width - 2 * margin;
+}
+
 export function whoDidWin(spaces: string[]): string {
   if (spaces[0] != _ && spaces[0] == spaces[1] && spaces[1] == spaces[2]) return spaces[0];
   if (spaces[3] != _ && spaces[3] == spaces[4] && spaces[4] == spaces[5]) return spaces[3];
@@ -38,6 +43,7 @@ const Game: React.FC<ContainerProps> = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const { height, width } = useWindowDimensions();
+
 
   function mark(index: number) {
     if (winner == _) {
@@ -65,7 +71,7 @@ const Game: React.FC<ContainerProps> = () => {
 
   return (
     <div className="game">
-      <Grid spaces={spaces} mark={mark.bind(this)}></Grid>
+      <Grid spaces={spaces} size={getGridSize(width, height)} mark={mark.bind(this)}></Grid>
       <IonButton onClick={restart}>Restart</IonButton>
       <IonAlert
         isOpen={showAlert}
