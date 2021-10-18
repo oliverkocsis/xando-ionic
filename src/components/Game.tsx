@@ -3,6 +3,7 @@ import './Game.css';
 import Grid from './Grid';
 import { _, X, O } from './Players';
 import { IonAlert, IonButton } from '@ionic/react';
+import useWindowDimensions from '../hooks/useWindowDimensions';
 
 
 interface ContainerProps { }
@@ -35,6 +36,8 @@ const Game: React.FC<ContainerProps> = () => {
   const [turn, setTurn] = useState(X);
   const [winner, setWinner] = useState(_);
   const [showAlert, setShowAlert] = useState(false);
+
+  const { height, width } = useWindowDimensions();
 
   function mark(index: number) {
     if (winner == _) {
