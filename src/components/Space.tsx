@@ -18,7 +18,7 @@ const Space: React.FC<ContainerProps> = (props) => {
   }
 
   return (
-    <div className="space" onClick={blockOrMark}>
+    <div className="space" onClick={blockOrMark} aria-label={props.value} data-testid={'space-' + props.index}>
       {props.value}
     </div>
   );
