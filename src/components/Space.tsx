@@ -19,12 +19,17 @@ const Space: React.FC<ContainerProps> = (props) => {
   }
 
   const styles = {
-    width: `${props.size - 2}px`,
-    height: `${props.size - 2}px`,
-    fontSize: `${props.size - 4}px`,
-    lineHeight: `${props.size}px`,
-    padding: `${props.size * 0.1}px`
+    width: `${props.size}px`,
+    height: `${props.size}px`,
+    padding: `${props.size * 0.1}px`,
+    borderTop: 'hidden',
+    borderRight: 'hidden',
+    borderLeft: 'solid',
+    borderBottom: 'solid',
   }
+
+  if (props.index > 5) styles.borderBottom = 'hidden';
+  if (props.index % 3 == 0) styles.borderLeft = 'hidden';
 
   let svgMark;
   switch (props.value) {
