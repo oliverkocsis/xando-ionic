@@ -72,7 +72,7 @@ const Game: React.FC<ContainerProps> = () => {
   return (
     <div className="game">
       <Grid spaces={spaces} size={getGridSize(width, height)} mark={mark.bind(this)}></Grid>
-      <IonButton onClick={restart}>Restart</IonButton>
+      <IonButton className='restart-button' onClick={restart}>Restart</IonButton>
       <IonAlert
         isOpen={showAlert}
         onDidDismiss={() => setShowAlert(false)}
