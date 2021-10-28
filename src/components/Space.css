@@ -6,3 +6,21 @@
     border-style: solid;
     border-width: 1px;  
 }
+
+.space .mark {
+    animation: grow 0.25s ease-in;
+  }
+
+  @keyframes grow {
+    0% {
+      transform: scale(0.00);
+    }
+  
+    75% {
+      transform: scale(1.25);
+    }
+  
+    100% {
+      transform: scale(1.00);
+    }
+  }
