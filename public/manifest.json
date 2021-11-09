@@ -1,6 +1,6 @@
 {
-  "short_name": "Ionic App",
-  "name": "My Ionic App",
+  "short_name": "X and O",
+  "name": "X and O: the tic-tac-toe game",
   "icons": [
     {
       "src": "assets/icon/favicon.png",
