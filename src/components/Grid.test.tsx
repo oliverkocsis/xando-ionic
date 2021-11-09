@@ -12,12 +12,12 @@ const spaces = [
 const mark = jest.fn((index) => { });
 
 test('renders without crashing', () => {
-  const { baseElement, getAllByText } = render(<Grid spaces={spaces} size={300} mark={mark} />);
+  const { baseElement, getAllByLabelText } = render(<Grid spaces={spaces} size={300} mark={mark} />);
   expect(baseElement).toBeDefined();
-  const _s = getAllByText(_);
-  expect(_s.length).toBe(3);
-  const xs = getAllByText(_);
+  const _s = getAllByLabelText(_);
+  expect(_s.length).toBe(3);  
+  const xs = getAllByLabelText(_);
   expect(xs.length).toBe(3);
-  const os = getAllByText(_);
+  const os = getAllByLabelText(_);
   expect(os.length).toBe(3);
 });
